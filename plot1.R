@@ -10,10 +10,6 @@ if (!file.exists("./data/household_power_consumption.txt")){
     unzip("./data/dataset.zip",exdir="./data")   
 }
 ## Loads subset into R
-## memory<-(2075259*9*8)/(2^20)
-## alternative
-## data2<-read.csv2("./data/household_power_consumption.txt")
-## data3<-data2[(data2$Date == '1/2/2007' | data2$Date == '2/2/2007'),]
 data <- read.csv2.sql("./data/household_power_consumption.txt", 
                      sql = "select * from file where Date = '1/2/2007' OR
                      Date = '2/2/2007'", eol = "\n")
